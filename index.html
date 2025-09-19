@@ -19,7 +19,8 @@
             --cinza-escuro: #6c757d; 
             --verde: #27ae60; 
             --vermelho: #e74c3c; 
-            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --azul-claro: #3498db; /* <-- CORREÇÃO DO BOTÃO */
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; background-color: var(--cinza-claro); color: #333; line-height: 1.6; padding: 20px; min-height: 100vh; }
@@ -194,7 +195,23 @@
             atualizarPreview();
         }
 
-        async function fetchDolarRate() { try { const r = await fetch('https://open.er-api.com/v6/latest/USD'); const d = await r.json(); dolarRate = parseFloat(d.rates.BRL); document.getElementById('dolar-value').textContent = `R$ ${dolarRate.toFixed(2)}`; if(document.getElementById('internacional').classList.contains('active')) calcularValoresInternacionais(); } catch (e) { document.getElementById('dolar-value').textContent = 'Erro'; } }
+        // <-- INÍCIO DA ALTERAÇÃO DA API
+        async function fetchDolarRate() {
+            try {
+                const r = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL');
+                if (!r.ok) throw new Error('Falha na resposta da rede.');
+                const d = await r.json();
+                dolarRate = parseFloat(d.USDBRL.bid);
+                document.getElementById('dolar-value').textContent = `R$ ${dolarRate.toFixed(2)}`;
+                if(document.getElementById('internacional').classList.contains('active')) {
+                    calcularValoresInternacionais();
+                }
+            } catch (e) {
+                console.error("Erro ao buscar cotação do dólar:", e);
+                document.getElementById('dolar-value').textContent = 'Erro';
+            }
+        }
+        // <-- FIM DA ALTERAÇÃO DA API
         
         async function fetchHoraAtual() {
             try {
