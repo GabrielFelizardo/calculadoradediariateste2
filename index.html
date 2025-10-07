@@ -293,14 +293,14 @@
             background-color: var(--gray-50);
         }
 
+        .total-row:hover td {
+            background: linear-gradient(135deg, #059669 0%, var(--success) 100%) !important;
+        }
+
         .total-row { 
             font-weight: 700; 
             background: linear-gradient(135deg, var(--success) 0%, #059669 100%) !important;
             color: white !important;
-        }
-
-        .total-row:hover {
-            background: linear-gradient(135deg, #059669 0%, var(--success) 100%) !important;
         }
 
         .total-row td:last-child { 
@@ -782,6 +782,7 @@
                         <strong>Grupo:</strong> <span id="preview-grupo">...</span>
                         <strong>Localidade:</strong> <span id="preview-localidade">...</span>
                         <strong id="label-cotacao">Cotação do Dólar:</strong> <span id="preview-cotacao">...</span>
+                        <strong id="label-fonte-cotacao">Fonte da Cotação:</strong> <span id="preview-fonte-cotacao">AwesomeAPI (economia.awesomeapi.com.br)</span>
                         <strong id="label-data-calculo">Data do Cálculo:</strong> <span id="preview-data-calculo">...</span>
                     </div>
                     <h4>Detalhamento dos Custos</h4>
@@ -955,6 +956,8 @@
             document.getElementById('preview-total-diaria-int').style.display = isNacional ? 'none' : 'block';
             document.getElementById('label-cotacao').style.display = isNacional ? 'none' : 'block';
             document.getElementById('preview-cotacao').style.display = isNacional ? 'none' : 'block';
+            document.getElementById('label-fonte-cotacao').style.display = isNacional ? 'none' : 'block';
+            document.getElementById('preview-fonte-cotacao').style.display = isNacional ? 'none' : 'block';
             document.getElementById('label-data-calculo').style.display = isNacional ? 'none' : 'block';
             document.getElementById('preview-data-calculo').style.display = isNacional ? 'none' : 'block';
             if (isNacional) {
@@ -1122,10 +1125,10 @@
                             </label>
                             <select id="pais-grupo">
                                 <option value="">Selecione o grupo de países</option>
-                                <option value="grupoA">Grupo A - Países de menor custo</option>
-                                <option value="grupoB">Grupo B - Países de custo moderado</option>
-                                <option value="grupoC">Grupo C - Países de custo elevado</option>
-                                <option value="grupoD">Grupo D - Países de custo muito elevado</option>
+                                <option value="grupoA">Grupo A</option>
+                                <option value="grupoB">Grupo B</option>
+                                <option value="grupoC">Grupo C</option>
+                                <option value="grupoD">Grupo D</option>
                             </select>
                             <span class="help-text">Clique no ícone de informação para ver quais países pertencem a cada grupo.</span>
                         </div>
@@ -1198,25 +1201,25 @@
                         <input type="search" id="search-paises" placeholder="🔍 Pesquisar país..." style="margin-bottom: 20px;">
                         <div class="paises-grid">
                             <div class="paises-group">
-                                <h4><i class="fas fa-circle" style="color: var(--success); margin-right: 8px;"></i>Grupo A - Menor Custo</h4>
+                                <h4><i class="fas fa-circle" style="color: var(--success); margin-right: 8px;"></i>Grupo A</h4>
                                 <div class="paises-list">
                                     <span>Afeganistão</span><span>Armênia</span><span>Bangladesh</span><span>Belarus</span><span>Bolívia</span><span>Benin</span><span>Burkina-Fasso</span><span>Butão</span><span>Comores</span><span>República Popular Democrática da Coréia</span><span>Costa Rica</span><span>El Salvador</span><span>Equador</span><span>Eslovênia</span><span>Filipinas</span><span>Gâmbia</span><span>Guiana</span><span>Guiné Bissau</span><span>Guiné</span><span>Honduras</span><span>Indonésia</span><span>Irã</span><span>Iraque</span><span>Laos</span><span>Líbano</span><span>Malásia</span><span>Maldivas</span><span>Marrocos</span><span>Mongólia</span><span>Myanmar</span><span>Namíbia</span><span>Nauru</span><span>Nepal</span><span>Nicarágua</span><span>Panamá</span><span>Paraguai</span><span>Rep. Centro Africana</span><span>República Togolesa</span><span>Salomão</span><span>Samoa</span><span>Seychelles</span><span>Serra Leoa</span><span>Síria</span><span>Somália</span><span>Sri Lanka</span><span>Suazilândia</span><span>Suriname</span><span>Tadjiquistão</span><span>Tailândia</span><span>Timor Leste</span><span>Tonga</span><span>Tunísia</span><span>Turcomenistão</span><span>Turquia</span><span>Tuvalu</span><span>Vanuatu</span><span>Vietnã</span><span>Zimbábue</span>
                                 </div>
                             </div>
                             <div class="paises-group">
-                                <h4><i class="fas fa-circle" style="color: var(--warning); margin-right: 8px;"></i>Grupo B - Custo Moderado</h4>
+                                <h4><i class="fas fa-circle" style="color: var(--warning); margin-right: 8px;"></i>Grupo B</h4>
                                 <div class="paises-list">
                                     <span>África do Sul</span><span>Albânia</span><span>Andorra</span><span>Argélia</span><span>Austrália</span><span>Barbados</span><span>Belize</span><span>Bósnia-Herzegovina</span><span>Burundi</span><span>Cabo Verde</span><span>Camarões</span><span>Camboja</span><span>Chade</span><span>Chipre</span><span>Colômbia</span><span>Dominica</span><span>Egito</span><span>Eritréia</span><span>Etiópia</span><span>Gana</span><span>Geórgia</span><span>Granada</span><span>Guiné-Equatorial</span><span>Haiti</span><span>Hungria</span><span>lêmen</span><span>Ilhas Marshall</span><span>Índia</span><span>Kiribati</span><span>Kuwait</span><span>Lesoto</span><span>Líbia</span><span>Macedônia</span><span>Madagascar</span><span>Malauí</span><span>Micronésia</span><span>Moçambique</span><span>Moldávia</span><span>Níger</span><span>Nigéria</span><span>Nova Zelândia</span><span>Palau</span><span>Papua Nova Guiné</span><span>Paquistão</span><span>Polônia</span><span>Quênia</span><span>República Dominicana</span><span>República Eslovaca</span><span>Romênia</span><span>Ruanda</span><span>São Tomé e Príncipe</span><span>Senegal</span><span>Sudão</span><span>Tanzânia</span><span>Uruguai</span><span>Uzbequistão</span><span>Venezuela</span>
                                 </div>
                             </div>
                             <div class="paises-group">
-                                <h4><i class="fas fa-circle" style="color: var(--accent); margin-right: 8px;"></i>Grupo C - Custo Elevado</h4>
+                                <h4><i class="fas fa-circle" style="color: var(--accent); margin-right: 8px;"></i>Grupo C</h4>
                                 <div class="paises-list">
                                     <span>Antígua e Barbuda</span><span>Arábia Saudita</span><span>Argentina</span><span>Azerbaijão</span><span>Bahamas</span><span>Bahrein</span><span>Brunei Darussalam</span><span>Botswana</span><span>Bulgária</span><span>Canadá</span><span>Chile</span><span>Cingapura</span><span>Congo</span><span>Costa do Marfim</span><span>Cuba</span><span>Djibuti</span><span>Fiji</span><span>Gabão</span><span>Guatemala</span><span>Jamaica</span><span>Jordânia</span><span>Letônia</span><span>Libéria</span><span>Lituânia</span><span>Mali</span><span>Malta</span><span>Maurício</span><span>Mauritânia</span><span>México</span><span>Peru</span><span>República Democrática do Congo</span><span>República Tcheca</span><span>Rússia</span><span>San Marino</span><span>Santa Lúcia</span><span>São Cristóvão e Névis</span><span>São Vicente e Granadinas</span><span>Taiwan</span><span>Trinidad e Tobago</span><span>Ucrânia</span><span>Uganda</span><span>Zâmbia</span>
                                 </div>
                             </div>
                             <div class="paises-group">
-                                <h4><i class="fas fa-circle" style="color: var(--danger); margin-right: 8px;"></i>Grupo D - Custo Muito Elevado</h4>
+                                <h4><i class="fas fa-circle" style="color: var(--danger); margin-right: 8px;"></i>Grupo D</h4>
                                 <div class="paises-list">
                                     <span>Alemanha</span><span>Angola</span><span>Áustria</span><span>Bélgica</span><span>Catar</span><span>Cazaquistão</span><span>China</span><span>Coréia do Sul</span><span>Croácia</span><span>Dinamarca</span><span>Emirados Árabes</span><span>Espanha</span><span>Estados Unidos da América</span><span>Estônia</span><span>Finlândia</span><span>França</span><span>Grécia</span><span>Hong Kong</span><span>Irlanda</span><span>Islândia</span><span>Israel</span><span>Itália</span><span>Japão</span><span>Liechtenstein</span><span>Luxemburgo</span><span>Mônaco</span><span>Montenegro</span><span>Noruega</span><span>Omã</span><span>Países Baixos</span><span>Portugal</span><span>Reino Unido</span><span>República Quirguiz</span><span>Sérvia</span><span>Suécia</span><span>Suíça</span>
                                 </div>
@@ -1265,12 +1268,10 @@
                     }
                 });
                 
-                // Mostra/esconde o grupo inteiro se não há países visíveis
                 grupo.style.display = grupoTemPaises ? 'block' : 'none';
             });
         }
 
-        // Função para mostrar notificações toast
         function showToast(message, type = 'info') {
             const toast = document.createElement('div');
             toast.style.cssText = `
@@ -1308,7 +1309,6 @@
         }
 
         window.onload = async function() {
-            // Mostra loading melhorado
             document.querySelector('.loading-spinner').style.display = 'block';
             
             try {
@@ -1319,21 +1319,18 @@
                 await carregarTodosOsValores();
                 await fetchDolarRate();
                 
-                // Atualiza cotação a cada 2 minutos
                 setInterval(fetchDolarRate, 2 * 60 * 1000);
                 
                 calcularValoresNacionais();
                 calcularValoresInternacionais();
                 atualizarPreview();
 
-                // Event listeners
                 ['simulador-nome', 'viajante-nome', 'viajante-id', 'viajante-banco', 'viajante-agencia', 'viajante-conta'].forEach(id => {
                     document.getElementById(id).addEventListener('input', atualizarPreview);
                 });
                 
                 document.getElementById('toggle-info-btn').addEventListener('click', toggleInfoPanel);
 
-                // Modal de países
                 const paisesModal = document.getElementById('paises-modal');
                 document.getElementById('paises-info-btn').addEventListener('click', () => {
                     paisesModal.classList.add('active');
@@ -1343,7 +1340,6 @@
                     paisesModal.classList.remove('active');
                 });
                 
-                // Fecha modal clicando fora
                 paisesModal.addEventListener('click', (e) => {
                     if (e.target === paisesModal) {
                         paisesModal.classList.remove('active');
@@ -1352,7 +1348,6 @@
                 
                 document.getElementById('search-paises').addEventListener('keyup', filtrarPaises);
                 
-                // Animação suave para elementos que aparecem
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -1367,7 +1362,6 @@
                     observer.observe(card);
                 });
                 
-                // CSS para animação
                 const animationStyle = document.createElement('style');
                 animationStyle.textContent = `
                     @keyframes fadeInUp {
@@ -1387,15 +1381,12 @@
             }
         };
 
-        // Adiciona atalhos de teclado
         document.addEventListener('keydown', function(e) {
-            // Ctrl/Cmd + P para imprimir
             if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
                 e.preventDefault();
                 imprimirPreview();
             }
             
-            // Ctrl/Cmd + T para alternar abas
             if ((e.ctrlKey || e.metaKey) && e.key === 't') {
                 e.preventDefault();
                 const currentTab = document.querySelector('.tab.active');
@@ -1403,7 +1394,6 @@
                 nextTab.click();
             }
             
-            // ESC para fechar modal
             if (e.key === 'Escape') {
                 const modal = document.querySelector('.modal-overlay.active');
                 if (modal) {
